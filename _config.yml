@@ -19,7 +19,7 @@ social-linkedin: # add your Linkedin handle
 social-email: # add your Email address
 
 # Disqus
-discus-identifier:  http://disqus.com/by/rocmac # add your discus identifier
+discus-identifier:  rocmac # add your discus identifier
 
 # Tracker
 analytics: # Google Analytics
