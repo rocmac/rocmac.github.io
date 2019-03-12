@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Study Flutter
+title: Flutter learning
 date: 2019-03-12 00:00:00 +0300
 description: Just write down flutter resources.
 img: flutter.jpeg # Add image post (optional)
