@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Vuex basic concepts - Will's blog</title>
+
+	<link rel="shortcut icon" href="/styles/images/favicon.jpg">
+	<link rel="icon" href="/styles/images/favicon.jpg">
+
+	<link rel="stylesheet" href="/styles/css/index.css">
+	<link rel="stylesheet" href="/styles/css/fontawesome/css/font-awesome.min.css">
+	<link rel="stylesheet" href="/styles/css/syntax.css">
+	<link rel="canonical" href="/2019/03/20/Vuex-basic-concepts/">
+	<link rel="alternate" type="application/rss+xml" title="Will's blog" href="/feed.xml">
+	
+	<meta name="keywords" content="Vuex basic concepts, Will's blog, 个人博客;学而不思则罔;思而不学则殆;生命不止;折腾不休">
+	<meta name="description" content="个人博客;学而不思则罔;思而不学则殆;生命不止;折腾不休">
+
+	<script src="/styles/js/jquery.min.js"></script>
+	<!--[if lt IE 9]>
+    	<script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+  	<![endif]-->
+  	<script>
+		var _hmt = _hmt || [];
+		(function() {
+		  var hm = document.createElement("script");
+		  hm.src = "//hm.baidu.com/hm.js?";
+		  var s = document.getElementsByTagName("script")[0]; 
+		  s.parentNode.insertBefore(hm, s);
+		})();
+	</script>
+  	<style type="text/css">
+	  	.docs-content{
+	  		margin-bottom: 10px;
+	  	}
+  	</style>
+</head>
+
+  <body class="index">
+
+    <header class="navbar navbar-inverse navbar-fixed-top docs-nav" role="banner">
+  <div class="container">
+    <div class="navbar-header">
+      <button class="navbar-toggle" type="button" data-toggle="collapse" data-target=".bs-navbar-collapse">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a href="/" class="navbar-brand">
+        <img src="/styles/images/logo.jpg">
+      </a>
+    </div>
+    <nav class="collapse navbar-collapse bs-navbar-collapse" role="navigation">
+      <ul class="nav navbar-nav">    
+        <li>
+          <a href="/">Home</a>
+        </li>
+        <li>
+          <a href="/categories/">大类分解</a>
+        </li>
+        <li>
+          <a href="/tag">小类内聚</a>
+        </li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        <li>
+            <a><span id="busuanzi_container_site_pv">本站总访问量<span id="busuanzi_value_site_pv"></span>次</span></a>
+        </li>
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown">关于<b class="caret"></b></a>
+          <ul class="dropdown-menu">
+            <li><a rel="nofollow" target="_blank" href="https://github.com/rocmac/">Github</a></li>
+            <li><a rel="nofollow" target="_blank" href="https://rocmac.github.io/">关于作者</a></li>
+            <li><a rel="nofollow" href="/books">我的书单</a></li>
+            <li><a rel="nofollow" href="http://www.hifreud.com/domains/">域名管理</a></li>
+            <li><a rel="nofollow" href="/reference">推荐博客</a></li>
+            <li><a href="/feed.xml">RSS订阅</a></li>
+            <li class="divider"></li>
+            <li><a rel="nofollow" target="_blank" href="https://github.com/luoyan35714/LessOrMore.git">本项目</a></li>
+          </ul>
+        </li>
+      </ul>
+    </nav>
+  </div>
+</header>
+    <div class="docs-header" id="content">
+  <div class="container">
+  	
+  		<!--
+		    <h1>Vuex basic concepts</h1>
+		    <p>Post on Mar 20, 2019 by <a href="/about">Will Lee</a></p>
+		-->
+		    <h1>Always hungry to keep learning.</h1>
+    
+  </div>
+</div>
+    
+      
+<div class="banner">
+  <div class="container">
+  	
+    	<a href="/categories/#Frontend-ref">Frontend</a>	/
+    	<a href="/tag/#VuexJavascript-ref">VuexJavascript</a>
+    
+  </div>
+</div>
+
+    
+
+    <div class="container docs-container">
+  <div class="row">
+    <div class="col-md-3">
+      <div class="sidebar hidden-print" role="complementary">
+        <div id="navigation">
+  <h1>目录</h1>
+  <ul class="nav sidenav">
+  </ul>
+  <div style="height: 200px;width: 200px;">
+    <script type="text/javascript" src="//rf.revolvermaps.com/0/0/8.js?i=&amp;m=0&amp;c=ff0000&amp;cr1=ffffff&amp;f=arial&amp;l=33" async="async"> 
+    </script>
+  </div>
+</div>
+
+ 
+      </div>
+    </div>
+    <div class="col-md-9" role="main">
+      <div class="panel docs-content">
+        <div class="wrapper">
+            <header class="post-header">
+              <h1 class="post-title">Vuex basic concepts</h1>
+              <!--
+                <p class="post-meta">Mar 20, 2019</p>
+              -->
+              <div class="meta">Posted on <span class="postdate">Mar 20, 2019</span> By <a target="_blank" href="http://localhost:4000">Will Lee</a></div>
+              <br />
+            </header>
+            <article class="post-content">
+              <ul id="markdown-toc">
+  <li><a href="#需调用-vueusevuex" id="markdown-toc-需调用-vueusevuex">需调用 Vue.use(Vuex)</a></li>
+  <li><a href="#state" id="markdown-toc-state">State</a></li>
+  <li><a href="#mapstate-辅助函数" id="markdown-toc-mapstate-辅助函数">mapState 辅助函数</a></li>
+  <li><a href="#getter" id="markdown-toc-getter">Getter</a>    <ul>
+      <li><a href="#mapgetters附属函数" id="markdown-toc-mapgetters附属函数">mapGetters附属函数</a></li>
+    </ul>
+  </li>
+  <li><a href="#mutation" id="markdown-toc-mutation">Mutation</a></li>
+  <li><a href="#action" id="markdown-toc-action">Action</a></li>
+  <li><a href="#module" id="markdown-toc-module">Module</a></li>
+</ul>
+
+<h3 id="需调用-vueusevuex">需调用 Vue.use(Vuex)</h3>
+
+<h2 id="state">State</h2>
+<p>Vuex使用使用单一状态树，用一个对象就包含了全部的应用层级状态</p>
+
+<h2 id="mapstate-辅助函数">mapState 辅助函数</h2>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>// 在单独构建的版本中辅助函数为 Vuex.mapState
+import { mapState } from 'vuex'
+
+export default {
+  // ...
+  computed: mapState({
+    // 箭头函数可使代码更简练
+    count: state =&gt; state.count,
+
+    // 传字符串参数 'count' 等同于 `state =&gt; state.count`
+    countAlias: 'count',
+
+    // 为了能够使用 `this` 获取局部状态，必须使用常规函数
+    countPlusLocalState (state) {
+      return state.count + this.localCount
+    }
+  })
+}
+</code></pre></div></div>
+
+<h2 id="getter">Getter</h2>
+<p>可以使用state，store.getters.*作为参数</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>const store = new Vuex.Store({
+  state: {
+    todos: [
+      { id: 1, text: '...', done: true },
+      { id: 2, text: '...', done: false }
+    ]
+  },
+  getters: {
+    doneTodos: state =&gt; {
+      return state.todos.filter(todo =&gt; todo.done)
+    }
+  }
+})
+</code></pre></div></div>
+<h3 id="mapgetters附属函数">mapGetters附属函数</h3>
+<p>mapGetters 辅助函数仅仅是将 store 中的 getter 映射到局部计算属性</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>import { mapGetters } from 'vuex'
+
+export default {
+  // ...
+  computed: {
+  // 使用对象展开运算符将 getter 混入 computed 对象中
+    ...mapGetters([
+      'doneTodosCount',
+      'anotherGetter',
+      // ...
+    ])
+  }
+}
+</code></pre></div></div>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>mapGetters({
+  // 把 `this.doneCount` 映射为 `this.$store.getters.doneTodosCount`
+  doneCount: 'doneTodosCount'
+})
+</code></pre></div></div>
+<h2 id="mutation">Mutation</h2>
+<ul>
+  <li>更改 Vuex 的 store 中的状态的唯一方法是提交 mutation</li>
+  <li>mutation必须是同步函数
+    <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>const store = new Vuex.Store({
+state: {
+  count: 1
+},
+mutations: {
+  increment (state) {
+    // 变更状态
+    state.count++
+  }
+}
+})
+</code></pre></div>    </div>
+    <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>store.commit('increment')
+</code></pre></div>    </div>
+  </li>
+  <li>提交payload,payload 可以使一个对象
+    <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>// ...
+mutations: {
+increment (state, n) {
+  state.count += n
+}
+}
+</code></pre></div>    </div>
+    <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>store.commit('increment', 10)
+</code></pre></div>    </div>
+    <h2 id="action">Action</h2>
+  </li>
+  <li>Action 提交的是 mutation，而不是直接变更状态</li>
+  <li>Action 可以包含任意异步操作</li>
+</ul>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>store.dispatch('increment')
+</code></pre></div></div>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>actions: {
+  incrementAsync ({ commit }) {
+    setTimeout(() =&gt; {
+      commit('increment')
+    }, 1000)
+  }
+}
+</code></pre></div></div>
+<h2 id="module">Module</h2>
+<p>Vuex 允许我们将 store 分割成模块（module）。每个模块拥有自己的 state、mutation、action、getter</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>const moduleA = {
+  state: { ... },
+  mutations: { ... },
+  actions: { ... },
+  getters: { ... }
+}
+
+const moduleB = {
+  state: { ... },
+  mutations: { ... },
+  actions: { ... }
+}
+
+const store = new Vuex.Store({
+  modules: {
+    a: moduleA,
+    b: moduleB
+  }
+})
+
+store.state.a // -&gt; moduleA 的状态
+store.state.b // -&gt; moduleB 的状态
+</code></pre></div></div>
+
+
+            </article>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+    <footer class="footer" role="contentinfo">
+	<div class="container">
+		<p class="copyright">Copyright &copy; 2014-2019 <a href="https://rocmac.github.io/"><code>Will Lee</code></a>.</p>
+		<p>Powered by <a href="http://jekyllrb.com">Jekyll</a>, themed from <a href="http://lesscss.cn/">Less</a>, refactored by <a href="http://www.hifreud.com/">Freud Kang</a></p>
+	</div>
+</footer>
+
+<script src="/styles/js/jquery.min.js"></script>
+<script src="/styles/js/bootstrap.min.js"></script>
+<script src="/styles/js/holder.min.js"></script>
+<script src="/styles/js/lessismore.js"></script>
+<script src="/styles/js/application.js"></script>
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  </body>
+</html>

@@ -1,0 +1,26 @@
+# Site settings
+name: Will's blog
+email: rocmac6080@gmail.com
+author: Will Lee
+url: https://rocmac.github.io/
+resume_site: https://rocmac.github.io/
+github: https://github.com/rocmac/
+baseurl: ""
+description: Always hungry to keep learning.
+meta_description: 个人博客;学而不思则罔;思而不学则殆;生命不止;折腾不休
+motto: Always hungry to keep learning.
+banner: 学而不思则罔，思而不学则殆。
+
+#permalink: /:categories/:year/:month/:day/:title/
+permalink: /:year/:month/:day/:title/
+paginate: 10
+
+exclude: ['README.md', 'Gemfile.lock', 'Gemfile', 'Rakefile']
+
+github_username: rocmac
+
+# Build settings
+markdown: kramdown
+
+baidu_analysis: 
+

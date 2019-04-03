@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Sass basic concepts - Will's blog</title>
+
+	<link rel="shortcut icon" href="/styles/images/favicon.jpg">
+	<link rel="icon" href="/styles/images/favicon.jpg">
+
+	<link rel="stylesheet" href="/styles/css/index.css">
+	<link rel="stylesheet" href="/styles/css/fontawesome/css/font-awesome.min.css">
+	<link rel="stylesheet" href="/styles/css/syntax.css">
+	<link rel="canonical" href="/2019/04/02/Sass-basic-concepts/">
+	<link rel="alternate" type="application/rss+xml" title="Will's blog" href="/feed.xml">
+	
+	<meta name="keywords" content="Sass basic concepts, Will's blog, 个人博客;学而不思则罔;思而不学则殆;生命不止;折腾不休">
+	<meta name="description" content="个人博客;学而不思则罔;思而不学则殆;生命不止;折腾不休">
+
+	<script src="/styles/js/jquery.min.js"></script>
+	<!--[if lt IE 9]>
+    	<script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+  	<![endif]-->
+  	<script>
+		var _hmt = _hmt || [];
+		(function() {
+		  var hm = document.createElement("script");
+		  hm.src = "//hm.baidu.com/hm.js?";
+		  var s = document.getElementsByTagName("script")[0]; 
+		  s.parentNode.insertBefore(hm, s);
+		})();
+	</script>
+  	<style type="text/css">
+	  	.docs-content{
+	  		margin-bottom: 10px;
+	  	}
+  	</style>
+</head>
+
+  <body class="index">
+
+    <header class="navbar navbar-inverse navbar-fixed-top docs-nav" role="banner">
+  <div class="container">
+    <div class="navbar-header">
+      <button class="navbar-toggle" type="button" data-toggle="collapse" data-target=".bs-navbar-collapse">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a href="/" class="navbar-brand">
+        <img src="/styles/images/logo.jpg">
+      </a>
+    </div>
+    <nav class="collapse navbar-collapse bs-navbar-collapse" role="navigation">
+      <ul class="nav navbar-nav">    
+        <li>
+          <a href="/">Home</a>
+        </li>
+        <li>
+          <a href="/categories/">大类分解</a>
+        </li>
+        <li>
+          <a href="/tag">小类内聚</a>
+        </li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        <li>
+            <a><span id="busuanzi_container_site_pv">本站总访问量<span id="busuanzi_value_site_pv"></span>次</span></a>
+        </li>
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown">关于<b class="caret"></b></a>
+          <ul class="dropdown-menu">
+            <li><a rel="nofollow" target="_blank" href="https://github.com/rocmac/">Github</a></li>
+            <li><a rel="nofollow" target="_blank" href="https://rocmac.github.io/">关于作者</a></li>
+            <li><a rel="nofollow" href="/books">我的书单</a></li>
+            <li><a rel="nofollow" href="http://www.hifreud.com/domains/">域名管理</a></li>
+            <li><a rel="nofollow" href="/reference">推荐博客</a></li>
+            <li><a href="/feed.xml">RSS订阅</a></li>
+            <li class="divider"></li>
+            <li><a rel="nofollow" target="_blank" href="https://github.com/luoyan35714/LessOrMore.git">本项目</a></li>
+          </ul>
+        </li>
+      </ul>
+    </nav>
+  </div>
+</header>
+    <div class="docs-header" id="content">
+  <div class="container">
+  	
+  		<!--
+		    <h1>Sass basic concepts</h1>
+		    <p>Post on Apr 02, 2019 by <a href="/about">Will Lee</a></p>
+		-->
+		    <h1>Always hungry to keep learning.</h1>
+    
+  </div>
+</div>
+    
+      
+<div class="banner">
+  <div class="container">
+  	
+    	<a href="/categories/#Frontend-ref">Frontend</a>	/
+    	<a href="/tag/#SassCss-ref">SassCss</a>
+    
+  </div>
+</div>
+
+    
+
+    <div class="container docs-container">
+  <div class="row">
+    <div class="col-md-3">
+      <div class="sidebar hidden-print" role="complementary">
+        <div id="navigation">
+  <h1>目录</h1>
+  <ul class="nav sidenav">
+  </ul>
+  <div style="height: 200px;width: 200px;">
+    <script type="text/javascript" src="//rf.revolvermaps.com/0/0/8.js?i=&amp;m=0&amp;c=ff0000&amp;cr1=ffffff&amp;f=arial&amp;l=33" async="async"> 
+    </script>
+  </div>
+</div>
+
+ 
+      </div>
+    </div>
+    <div class="col-md-9" role="main">
+      <div class="panel docs-content">
+        <div class="wrapper">
+            <header class="post-header">
+              <h1 class="post-title">Sass basic concepts</h1>
+              <!--
+                <p class="post-meta">Apr 2, 2019</p>
+              -->
+              <div class="meta">Posted on <span class="postdate">Apr 02, 2019</span> By <a target="_blank" href="http://localhost:4000">Will Lee</a></div>
+              <br />
+            </header>
+            <article class="post-content">
+              <ul id="markdown-toc">
+  <li><a href="#概述" id="markdown-toc-概述">概述</a></li>
+  <li><a href="#编译方法" id="markdown-toc-编译方法">编译方法</a></li>
+  <li><a href="#基本用法" id="markdown-toc-基本用法">基本用法</a></li>
+</ul>
+
+<h3 id="概述">概述</h3>
+<p>Sass的学名叫“CSS预处理器”，就是在CSS的基础上，引入了变量、嵌套、mixin（混合）、运算以及函数等功能，增加了代码的灵活性，可以让我们以更少的代码实现同样的效果，而且代码的整洁度、可读性更强</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Sass有两种后缀名文件：.sass和.scss
+</code></pre></div></div>
+
+<h3 id="编译方法">编译方法</h3>
+<p>Sass编译方式大概有三种：通过命令行编译（基础方法）、GUI可视化图形同居编译及自动化编译。</p>
+
+<h2 id="基本用法">基本用法</h2>
+<ol>
+  <li>变量
+通过 $ 符号来定义，通过变量名称实现多处重复引用
+```
+$box-color: red;        //定义变量
+ul{
+ color: $box-color;      //引用
+}
+li{
+ background-color: $box-color;       //引用
+}</li>
+</ol>
+
+<p>//编译后
+ul {
+  color: red;
+}
+li {
+  background-color: red;
+}</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+2. 嵌套
+
+- 选择性嵌套
+</code></pre></div></div>
+<p>div {
+    h1 {
+        color: #333;
+    }
+    p {
+        margin-bottom: 1.4px;
+        a {
+            color: #999;
+        }
+    }
+}</p>
+
+<p>/* 编译后 */
+div h1 { color: #333; }
+div p { margin-bottom: 1.4px; }
+div p a { color: #999; }</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+- 嵌套属性
+</code></pre></div></div>
+<p>div {
+    border: {
+      style: solid;
+      width: 1px;
+      color: #ccc;
+    }
+}</p>
+
+<p>//编译后
+div {
+  border-style: solid;
+  border-width: 1px;
+  border-color: #ccc;
+}</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+3. 代码重用之继承
+</code></pre></div></div>
+<p>.class1 {
+    border: 1px solid #333;
+}</p>
+
+<p>.class2 {
+    @extend .class1;
+    background-color: #999;
+}</p>
+
+<p>//编译后
+.class1, .class2 {
+  border: 1px solid #333;
+}</p>
+
+<p>.class2 {
+  background-color: #999;
+}</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>4. 代码重用之Mixin混合器
+</code></pre></div></div>
+<p>@mixin mixName {      <br />
+    float: left;
+    margin-left: 10px;
+}</p>
+
+<p>div {
+    @include mixName;
+}</p>
+
+<p>//编译后：
+div {
+  float: left;
+  margin-left: 10px;
+}</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+5. 颜色函数
+</code></pre></div></div>
+<p>$box-color: red;      <br />
+ul {
+    color: $box-color;    <br />
+}
+li {
+    background-color: darken($box-color,30%);     <br />
+}</p>
+
+<p>//编译后：
+ul {
+  color: red;
+}
+li {
+  background-color: #660000;
+}</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+</code></pre></div></div>
+<p>其他颜色函数</p>
+
+<p>lighten(#cc3, 10%) // #d6d65c
+grayscale(#cc3) // #808080
+complement(#cc3) // #33c</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+6. import 引入
+</code></pre></div></div>
+<p>@import ‘partial’       //导入名为“_partial.scss”的文件
+@import ‘toolbar.css’       //导入名为“toolbar.css”的文件</p>
+<ul>
+  <li>{
+  margin: 0;
+  padding: 0;
+}
+```</li>
+</ul>
+
+            </article>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+    <footer class="footer" role="contentinfo">
+	<div class="container">
+		<p class="copyright">Copyright &copy; 2014-2019 <a href="https://rocmac.github.io/"><code>Will Lee</code></a>.</p>
+		<p>Powered by <a href="http://jekyllrb.com">Jekyll</a>, themed from <a href="http://lesscss.cn/">Less</a>, refactored by <a href="http://www.hifreud.com/">Freud Kang</a></p>
+	</div>
+</footer>
+
+<script src="/styles/js/jquery.min.js"></script>
+<script src="/styles/js/bootstrap.min.js"></script>
+<script src="/styles/js/holder.min.js"></script>
+<script src="/styles/js/lessismore.js"></script>
+<script src="/styles/js/application.js"></script>
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  </body>
+</html>
