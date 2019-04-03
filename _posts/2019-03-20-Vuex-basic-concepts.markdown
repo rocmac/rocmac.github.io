@@ -9,6 +9,7 @@ tag: [Vuex, Javascript] # add tag
 * content
 {:toc}
 
+
 ### 需调用 Vue.use(Vuex)
 
 ## State

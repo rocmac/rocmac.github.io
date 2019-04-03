@@ -142,7 +142,15 @@
               <ul id="markdown-toc">
   <li><a href="#概述" id="markdown-toc-概述">概述</a></li>
   <li><a href="#编译方法" id="markdown-toc-编译方法">编译方法</a></li>
-  <li><a href="#基本用法" id="markdown-toc-基本用法">基本用法</a></li>
+  <li><a href="#基本用法" id="markdown-toc-基本用法">基本用法</a>    <ul>
+      <li><a href="#1变量" id="markdown-toc-1变量">1.变量</a></li>
+      <li><a href="#2嵌套" id="markdown-toc-2嵌套">2.嵌套</a></li>
+      <li><a href="#3代码重用之继承" id="markdown-toc-3代码重用之继承">3.代码重用之继承</a></li>
+      <li><a href="#4代码重用之mixin混合器" id="markdown-toc-4代码重用之mixin混合器">4.代码重用之Mixin混合器</a></li>
+      <li><a href="#5颜色函数" id="markdown-toc-5颜色函数">5.颜色函数</a></li>
+      <li><a href="#6import-引入" id="markdown-toc-6import-引入">6.import 引入</a></li>
+    </ul>
+  </li>
 </ul>
 
 <h3 id="概述">概述</h3>
@@ -155,32 +163,33 @@
 <p>Sass编译方式大概有三种：通过命令行编译（基础方法）、GUI可视化图形同居编译及自动化编译。</p>
 
 <h2 id="基本用法">基本用法</h2>
-<ol>
-  <li>变量
-通过 $ 符号来定义，通过变量名称实现多处重复引用
-```
-$box-color: red;        //定义变量
+<h4 id="1变量">1.变量</h4>
+
+<p>通过 $ 符号来定义，通过变量名称实现多处重复引用</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$box-color: red;        //定义变量
 ul{
- color: $box-color;      //引用
+    color: $box-color;      //引用
 }
 li{
- background-color: $box-color;       //引用
-}</li>
-</ol>
-
-<p>//编译后
+    background-color: $box-color;       //引用
+}
+    
+//编译后
 ul {
   color: red;
 }
 li {
   background-color: red;
-}</p>
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
-2. 嵌套
-
-- 选择性嵌套
+}
 </code></pre></div></div>
-<p>div {
+
+<h4 id="2嵌套">2.嵌套</h4>
+
+<ul>
+  <li>选择性嵌套</li>
+</ul>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>div {
     h1 {
         color: #333;
     }
@@ -190,103 +199,109 @@ li {
             color: #999;
         }
     }
-}</p>
-
-<p>/* 编译后 */
+}
+    
+ /* 编译后 */
 div h1 { color: #333; }
 div p { margin-bottom: 1.4px; }
-div p a { color: #999; }</p>
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
-- 嵌套属性
+div p a { color: #999; }
 </code></pre></div></div>
-<p>div {
+
+<ul>
+  <li>嵌套属性</li>
+</ul>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>div {
     border: {
       style: solid;
       width: 1px;
       color: #ccc;
     }
-}</p>
-
-<p>//编译后
+}
+    
+//编译后
 div {
   border-style: solid;
   border-width: 1px;
   border-color: #ccc;
-}</p>
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
-3. 代码重用之继承
+}
 </code></pre></div></div>
-<p>.class1 {
-    border: 1px solid #333;
-}</p>
 
-<p>.class2 {
+<h4 id="3代码重用之继承">3.代码重用之继承</h4>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>.class1 {
+    border: 1px solid #333;
+}
+    
+.class2 {
     @extend .class1;
     background-color: #999;
-}</p>
-
-<p>//编译后
+}
+    
+//编译后
 .class1, .class2 {
   border: 1px solid #333;
-}</p>
-
-<p>.class2 {
+}
+    
+.class2 {
   background-color: #999;
-}</p>
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>4. 代码重用之Mixin混合器
+}
 </code></pre></div></div>
-<p>@mixin mixName {      <br />
+
+<h4 id="4代码重用之mixin混合器">4.代码重用之Mixin混合器</h4>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>@mixin mixName {        
     float: left;
     margin-left: 10px;
-}</p>
-
-<p>div {
+}
+    
+div {
     @include mixName;
-}</p>
-
-<p>//编译后：
+}
+    
+//编译后：
 div {
   float: left;
   margin-left: 10px;
-}</p>
-
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
-5. 颜色函数
+}
+    
 </code></pre></div></div>
-<p>$box-color: red;      <br />
+
+<h4 id="5颜色函数">5.颜色函数</h4>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$box-color: red;        
 ul {
-    color: $box-color;    <br />
+    color: $box-color;      
 }
 li {
-    background-color: darken($box-color,30%);     <br />
-}</p>
-
-<p>//编译后：
+    background-color: darken($box-color,30%);       
+}
+    
+//编译后：
 ul {
   color: red;
 }
 li {
   background-color: #660000;
-}</p>
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
-</code></pre></div></div>
-<p>其他颜色函数</p>
-
-<p>lighten(#cc3, 10%) // #d6d65c
-grayscale(#cc3) // #808080
-complement(#cc3) // #33c</p>
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
-6. import 引入
-</code></pre></div></div>
-<p>@import ‘partial’       //导入名为“_partial.scss”的文件
-@import ‘toolbar.css’       //导入名为“toolbar.css”的文件</p>
-<ul>
-  <li>{
-  margin: 0;
-  padding: 0;
 }
-```</li>
-</ul>
+</code></pre></div></div>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>其他颜色函数
+
+lighten(#cc3, 10%) // #d6d65c
+grayscale(#cc3) // #808080
+complement(#cc3) // #33c
+</code></pre></div></div>
+
+<h4 id="6import-引入">6.import 引入</h4>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>@import ‘partial’       //导入名为“_partial.scss”的文件
+@import ‘toolbar.css’       //导入名为“toolbar.css”的文件
+* {
+    margin: 0;
+    padding: 0;
+}
+</code></pre></div></div>
 
             </article>
         </div>
