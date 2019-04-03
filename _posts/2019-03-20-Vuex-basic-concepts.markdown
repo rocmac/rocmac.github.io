@@ -38,8 +38,11 @@ export default {
 }
 ```
 
+
 ## Getter
+
 可以使用state，store.getters.*作为参数
+
 ```
 const store = new Vuex.Store({
   state: {
@@ -55,8 +58,10 @@ const store = new Vuex.Store({
   }
 })
 ```
+
 ### mapGetters附属函数
 mapGetters 辅助函数仅仅是将 store 中的 getter 映射到局部计算属性
+
 ```
 import { mapGetters } from 'vuex'
 
@@ -72,15 +77,18 @@ export default {
   }
 }
 ```
+
 ```
 mapGetters({
   // 把 `this.doneCount` 映射为 `this.$store.getters.doneTodosCount`
   doneCount: 'doneTodosCount'
 })
 ```
+
 ## Mutation
 - 更改 Vuex 的 store 中的状态的唯一方法是提交 mutation
 - mutation必须是同步函数
+
 ```
 const store = new Vuex.Store({
   state: {
@@ -94,10 +102,13 @@ const store = new Vuex.Store({
   }
 })
 ```
+
 ```
 store.commit('increment')
 ```
+
 - 提交payload,payload 可以使一个对象
+
 ```
 // ...
 mutations: {
@@ -106,9 +117,11 @@ mutations: {
   }
 }
 ```
+
 ```
 store.commit('increment', 10)
 ```
+
 ## Action
 - Action 提交的是 mutation，而不是直接变更状态
 - Action 可以包含任意异步操作
@@ -116,6 +129,7 @@ store.commit('increment', 10)
 ```
 store.dispatch('increment')
 ```
+
 ```
 actions: {
   incrementAsync ({ commit }) {
@@ -125,8 +139,10 @@ actions: {
   }
 }
 ```
+
 ## Module
 Vuex 允许我们将 store 分割成模块（module）。每个模块拥有自己的 state、mutation、action、getter
+
 ```
 const moduleA = {
   state: { ... },

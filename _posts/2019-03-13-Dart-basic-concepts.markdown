@@ -11,6 +11,7 @@ tag: [Dart, Flutter] # add tag
 
 
 ### Dart的一些概念
+
 ---
 - 每个变量都是一个对象
 - Dart在运行前解析所有代码
@@ -19,6 +20,7 @@ tag: [Dart, Flutter] # add tag
 - 与java 不同，Dart不具备关键字public，protected和private。如果一个标识符以下划线(_)开始，那么他和他的库都是私有的
 - Dart有两种运行模式：生产（production）和检查（checked）。我们建议在检查模式开发和调试，并将其部署到生产模式。
 - Production mode是Dart程序一个速度优化的默认运行模式。Production mode忽略断言语句和静态类型。
+
 --- 
 
 ### Dart内置标识符
@@ -27,6 +29,7 @@ tag: [Dart, Flutter] # add tag
 
 ### Dart函数
   => 表达式;语法是{ return 表达式 }的简写。在printNumber()方法中，这个表达式调用了顶级函数print()。
+
 ```
 void printNumber(num number) =>
      print('The number is $number.');
@@ -49,6 +52,7 @@ enableFlags({bool bold: false, bool hidden: false}) {
 enableFlags(bold:true);
 
 ```
+
 - #### 可选位置参数
 
 ```
@@ -66,13 +70,16 @@ assert(say('Bob', 'Howdy') ==
 ```
 
 ### 级联操作符
+
 ```
 querySelector('#button') // Get an object.
   ..text = 'Confirm'   // Use its members.
   ..classes.add('important')
   ..onClick.listen((e) => window.alert('Confirmed!'));
 ```
+
 等于
+
 ```
 var button = querySelector('#button');
 button.text = 'Confirm';

@@ -141,20 +141,18 @@
             <article class="post-content">
               <ul id="markdown-toc">
   <li><a href="#dart的一些概念" id="markdown-toc-dart的一些概念">Dart的一些概念</a></li>
-  <li><a href="#production-mode是dart程序一个速度优化的默认运行模式production-mode忽略断言语句和静态类型" id="markdown-toc-production-mode是dart程序一个速度优化的默认运行模式production-mode忽略断言语句和静态类型">Production mode是Dart程序一个速度优化的默认运行模式。Production mode忽略断言语句和静态类型。</a>    <ul>
-      <li><a href="#dart内置标识符" id="markdown-toc-dart内置标识符">Dart内置标识符</a></li>
-      <li><a href="#dart函数" id="markdown-toc-dart函数">Dart函数</a></li>
-      <li><a href="#可选参数" id="markdown-toc-可选参数">可选参数</a>        <ul>
-          <li><a href="#可选命名参数" id="markdown-toc-可选命名参数">可选命名参数</a></li>
-          <li><a href="#可选位置参数" id="markdown-toc-可选位置参数">可选位置参数</a></li>
-        </ul>
-      </li>
-      <li><a href="#级联操作符" id="markdown-toc-级联操作符">级联操作符</a></li>
+  <li><a href="#dart内置标识符" id="markdown-toc-dart内置标识符">Dart内置标识符</a></li>
+  <li><a href="#dart函数" id="markdown-toc-dart函数">Dart函数</a></li>
+  <li><a href="#可选参数" id="markdown-toc-可选参数">可选参数</a>    <ul>
+      <li><a href="#可选命名参数" id="markdown-toc-可选命名参数">可选命名参数</a></li>
+      <li><a href="#可选位置参数" id="markdown-toc-可选位置参数">可选位置参数</a></li>
     </ul>
   </li>
+  <li><a href="#级联操作符" id="markdown-toc-级联操作符">级联操作符</a></li>
 </ul>
 
 <h3 id="dart的一些概念">Dart的一些概念</h3>
+
 <hr />
 <ul>
   <li>每个变量都是一个对象</li>
@@ -163,16 +161,17 @@
   <li>支持顶级变量，以及依赖于类或对象的变量</li>
   <li>与java 不同，Dart不具备关键字public，protected和private。如果一个标识符以下划线(_)开始，那么他和他的库都是私有的</li>
   <li>Dart有两种运行模式：生产（production）和检查（checked）。我们建议在检查模式开发和调试，并将其部署到生产模式。</li>
-  <li>
-    <h2 id="production-mode是dart程序一个速度优化的默认运行模式production-mode忽略断言语句和静态类型">Production mode是Dart程序一个速度优化的默认运行模式。Production mode忽略断言语句和静态类型。</h2>
-  </li>
+  <li>Production mode是Dart程序一个速度优化的默认运行模式。Production mode忽略断言语句和静态类型。</li>
 </ul>
+
+<hr />
 
 <h3 id="dart内置标识符">Dart内置标识符</h3>
 <p>为了方便javascript向Dart的移植</p>
 
 <h3 id="dart函数">Dart函数</h3>
 <p>=&gt; 表达式;语法是{ return 表达式 }的简写。在printNumber()方法中，这个表达式调用了顶级函数print()。</p>
+
 <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>void printNumber(num number) =&gt;
      print('The number is $number.');
 </code></pre></div></div>
@@ -197,6 +196,7 @@ enableFlags({bool bold: false, bool hidden: false}) {
 enableFlags(bold:true);
 
 </code></pre></div></div>
+
 <ul>
   <li>
     <h4 id="可选位置参数">可选位置参数</h4>
@@ -217,12 +217,15 @@ assert(say('Bob', 'Howdy') ==
 </code></pre></div></div>
 
 <h3 id="级联操作符">级联操作符</h3>
+
 <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>querySelector('#button') // Get an object.
   ..text = 'Confirm'   // Use its members.
   ..classes.add('important')
   ..onClick.listen((e) =&gt; window.alert('Confirmed!'));
 </code></pre></div></div>
+
 <p>等于</p>
+
 <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>var button = querySelector('#button');
 button.text = 'Confirm';
 button.classes.add('important');

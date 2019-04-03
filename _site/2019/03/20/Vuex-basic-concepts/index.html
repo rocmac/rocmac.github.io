@@ -180,7 +180,9 @@ export default {
 </code></pre></div></div>
 
 <h2 id="getter">Getter</h2>
+
 <p>可以使用state，store.getters.*作为参数</p>
+
 <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>const store = new Vuex.Store({
   state: {
     todos: [
@@ -195,8 +197,10 @@ export default {
   }
 })
 </code></pre></div></div>
+
 <h3 id="mapgetters附属函数">mapGetters附属函数</h3>
 <p>mapGetters 辅助函数仅仅是将 store 中的 getter 映射到局部计算属性</p>
+
 <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>import { mapGetters } from 'vuex'
 
 export default {
@@ -211,48 +215,59 @@ export default {
   }
 }
 </code></pre></div></div>
+
 <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>mapGetters({
   // 把 `this.doneCount` 映射为 `this.$store.getters.doneTodosCount`
   doneCount: 'doneTodosCount'
 })
 </code></pre></div></div>
+
 <h2 id="mutation">Mutation</h2>
 <ul>
   <li>更改 Vuex 的 store 中的状态的唯一方法是提交 mutation</li>
-  <li>mutation必须是同步函数
-    <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>const store = new Vuex.Store({
-state: {
-  count: 1
-},
+  <li>mutation必须是同步函数</li>
+</ul>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>const store = new Vuex.Store({
+  state: {
+    count: 1
+  },
+  mutations: {
+    increment (state) {
+      // 变更状态
+      state.count++
+    }
+  }
+})
+</code></pre></div></div>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>store.commit('increment')
+</code></pre></div></div>
+
+<ul>
+  <li>提交payload,payload 可以使一个对象</li>
+</ul>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>// ...
 mutations: {
-  increment (state) {
-    // 变更状态
-    state.count++
+  increment (state, n) {
+    state.count += n
   }
 }
-})
-</code></pre></div>    </div>
-    <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>store.commit('increment')
-</code></pre></div>    </div>
-  </li>
-  <li>提交payload,payload 可以使一个对象
-    <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>// ...
-mutations: {
-increment (state, n) {
-  state.count += n
-}
-}
-</code></pre></div>    </div>
-    <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>store.commit('increment', 10)
-</code></pre></div>    </div>
-    <h2 id="action">Action</h2>
-  </li>
+</code></pre></div></div>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>store.commit('increment', 10)
+</code></pre></div></div>
+
+<h2 id="action">Action</h2>
+<ul>
   <li>Action 提交的是 mutation，而不是直接变更状态</li>
   <li>Action 可以包含任意异步操作</li>
 </ul>
 
 <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>store.dispatch('increment')
 </code></pre></div></div>
+
 <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>actions: {
   incrementAsync ({ commit }) {
     setTimeout(() =&gt; {
@@ -261,8 +276,10 @@ increment (state, n) {
   }
 }
 </code></pre></div></div>
+
 <h2 id="module">Module</h2>
 <p>Vuex 允许我们将 store 分割成模块（module）。每个模块拥有自己的 state、mutation、action、getter</p>
+
 <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>const moduleA = {
   state: { ... },
   mutations: { ... },
