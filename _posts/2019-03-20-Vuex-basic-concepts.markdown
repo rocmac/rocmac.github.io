@@ -2,7 +2,7 @@
 layout: post
 title:  Vuex basic concepts
 date:   2019-03-20 00:00:00 +0300
-categories: Front end
+categories: Vue
 tag: [Vuex, Javascript] # add tag
 ---
 

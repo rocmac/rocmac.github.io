@@ -2,7 +2,7 @@
 layout: post
 title:  Dart basic concepts
 date:   2019-03-13 00:00:00 +0300
-categories: Front end
+categories: Flutter
 tag: [Dart, Flutter] # add tag
 ---
 

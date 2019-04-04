@@ -2,7 +2,7 @@
 layout: post
 title:  Sass basic concepts
 date:   2019-04-02 00:00:00 +0300
-categories: Front end
+categories: Css
 tag: [Sass, Css] # add tag
 ---
 

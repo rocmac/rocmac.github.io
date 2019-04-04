@@ -2,7 +2,7 @@
 layout: post
 title:  Vue router basic concepts
 date:   2019-04-04 00:00:00 +0300
-categories: Front end
+categories: Vue
 tag: [Vue, router] # add tag
 ---
 

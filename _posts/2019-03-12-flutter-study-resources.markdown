@@ -2,7 +2,7 @@
 layout: post
 title:  Flutter learning
 date:   2019-03-12 00:00:00 +0300
-categories: Front end
+categories: Flutter
 tag: Js, Flutter] # add tag
 ---
 
