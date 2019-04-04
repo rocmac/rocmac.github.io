@@ -5,9 +5,189 @@
     <description>Always hungry to keep learning.</description>
     <link>http://localhost:4000/</link>
     <atom:link href="http://localhost:4000/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Wed, 03 Apr 2019 19:07:38 +0800</pubDate>
-    <lastBuildDate>Wed, 03 Apr 2019 19:07:38 +0800</lastBuildDate>
+    <pubDate>Thu, 04 Apr 2019 14:50:22 +0800</pubDate>
+    <lastBuildDate>Thu, 04 Apr 2019 14:50:22 +0800</lastBuildDate>
     <generator>Jekyll v3.8.5</generator>
+    
+      <item>
+        <title>Vue router basic concepts</title>
+        <description>&lt;ul id=&quot;markdown-toc&quot;&gt;
+  &lt;li&gt;&lt;a href=&quot;#功能列表&quot; id=&quot;markdown-toc-功能列表&quot;&gt;功能列表&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#动态路由匹配&quot; id=&quot;markdown-toc-动态路由匹配&quot;&gt;动态路由匹配&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#嵌套路由&quot; id=&quot;markdown-toc-嵌套路由&quot;&gt;嵌套路由&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#编程式的导航&quot; id=&quot;markdown-toc-编程式的导航&quot;&gt;编程式的导航&lt;/a&gt;    &lt;ul&gt;
+      &lt;li&gt;&lt;a href=&quot;#routergon&quot; id=&quot;markdown-toc-routergon&quot;&gt;router.go(n)&lt;/a&gt;        &lt;ul&gt;
+          &lt;li&gt;&lt;a href=&quot;#routerreplacelocation-oncomplete-onabort&quot; id=&quot;markdown-toc-routerreplacelocation-oncomplete-onabort&quot;&gt;router.replace(location, onComplete?, onAbort?)&lt;/a&gt;&lt;/li&gt;
+        &lt;/ul&gt;
+      &lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#命名路由&quot; id=&quot;markdown-toc-命名路由&quot;&gt;命名路由&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#命名视图&quot; id=&quot;markdown-toc-命名视图&quot;&gt;命名视图&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#重定向和别名&quot; id=&quot;markdown-toc-重定向和别名&quot;&gt;重定向和别名&lt;/a&gt;    &lt;ul&gt;
+      &lt;li&gt;&lt;a href=&quot;#别名&quot; id=&quot;markdown-toc-别名&quot;&gt;别名&lt;/a&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;功能列表&quot;&gt;功能列表&lt;/h3&gt;
+&lt;ul&gt;
+  &lt;li&gt;嵌套的路由/视图表&lt;/li&gt;
+  &lt;li&gt;模块化的、基于组件的路由配置&lt;/li&gt;
+  &lt;li&gt;路由参数、查询、通配符&lt;/li&gt;
+  &lt;li&gt;基于 Vue.js 过渡系统的视图过渡效果&lt;/li&gt;
+  &lt;li&gt;细粒度的导航控制&lt;/li&gt;
+  &lt;li&gt;带有自动激活的 CSS class 的链接&lt;/li&gt;
+  &lt;li&gt;HTML5 历史模式或 hash 模式，在 IE9 中自动降级&lt;/li&gt;
+  &lt;li&gt;自定义的滚动条行为&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;example:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&amp;lt;script src=&quot;https://unpkg.com/vue/dist/vue.js&quot;&amp;gt;&amp;lt;/script&amp;gt;
+&amp;lt;script src=&quot;https://unpkg.com/vue-router/dist/vue-router.js&quot;&amp;gt;&amp;lt;/script&amp;gt;
+
+&amp;lt;div id=&quot;app&quot;&amp;gt;
+  &amp;lt;h1&amp;gt;Hello App!&amp;lt;/h1&amp;gt;
+  &amp;lt;p&amp;gt;
+    &amp;lt;!-- 使用 router-link 组件来导航. --&amp;gt;
+    &amp;lt;!-- 通过传入 `to` 属性指定链接. --&amp;gt;
+    &amp;lt;!-- &amp;lt;router-link&amp;gt; 默认会被渲染成一个 `&amp;lt;a&amp;gt;` 标签 --&amp;gt;
+    &amp;lt;router-link to=&quot;/foo&quot;&amp;gt;Go to Foo&amp;lt;/router-link&amp;gt;
+    &amp;lt;router-link to=&quot;/bar&quot;&amp;gt;Go to Bar&amp;lt;/router-link&amp;gt;
+  &amp;lt;/p&amp;gt;
+  &amp;lt;!-- 路由出口 --&amp;gt;
+  &amp;lt;!-- 路由匹配到的组件将渲染在这里 --&amp;gt;
+  &amp;lt;router-view&amp;gt;&amp;lt;/router-view&amp;gt;
+&amp;lt;/div&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h2 id=&quot;动态路由匹配&quot;&gt;动态路由匹配&lt;/h2&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;const User = {
+  template: '&amp;lt;div&amp;gt;User&amp;lt;/div&amp;gt;'
+}
+
+const router = new VueRouter({
+  routes: [
+    // 动态路径参数 以冒号开头
+    { path: '/user/:id', component: User }
+  ]
+})
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;const User = {
+  template: '&amp;lt;div&amp;gt;User &amp;lt;/div&amp;gt;'
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h2 id=&quot;嵌套路由&quot;&gt;嵌套路由&lt;/h2&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;const router = new VueRouter({
+  routes: [
+    { path: '/user/:id', component: User,
+      children: [
+        {
+          // 当 /user/:id/profile 匹配成功，
+          // UserProfile 会被渲染在 User 的 &amp;lt;router-view&amp;gt; 中
+          path: 'profile',
+          component: UserProfile
+        },
+        {
+          // 当 /user/:id/posts 匹配成功
+          // UserPosts 会被渲染在 User 的 &amp;lt;router-view&amp;gt; 中
+          path: 'posts',
+          component: UserPosts
+        }
+      ]
+    }
+  ]
+})
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h2 id=&quot;编程式的导航&quot;&gt;编程式的导航&lt;/h2&gt;
+&lt;p&gt;在 Vue 实例内部，你可以通过 $router 访问路由实例。因此你可以调用&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;// 字符串
+router.push('home')
+
+// 对象
+router.push({ path: 'home' })
+
+// 命名的路由
+router.push({ name: 'user', params: { userId: '123' }})
+
+// 带查询参数，变成 /register?plan=private
+router.push({ path: 'register', query: { plan: 'private' }})
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h3 id=&quot;routergon&quot;&gt;router.go(n)&lt;/h3&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;// 在浏览器记录中前进一步，等同于 history.forward()
+router.go(1)
+
+// 后退一步记录，等同于 history.back()
+router.go(-1)
+
+// 前进 3 步记录
+router.go(3)
+
+// 如果 history 记录不够用，那就默默地失败呗
+router.go(-100)
+router.go(100)
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h5 id=&quot;routerreplacelocation-oncomplete-onabort&quot;&gt;router.replace(location, onComplete?, onAbort?)&lt;/h5&gt;
+
+&lt;h2 id=&quot;命名路由&quot;&gt;命名路由&lt;/h2&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;const router = new VueRouter({
+  routes: [
+    {
+      path: '/user/:userId',
+      name: 'user',
+      component: User
+    }
+  ]
+})
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&amp;lt;router-link :to=&quot;{ name: 'user', params: { userId: 123 }}&quot;&amp;gt;User&amp;lt;/router-link&amp;gt;
+router.push({ name: 'user', params: { userId: 123 }})
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h2 id=&quot;命名视图&quot;&gt;命名视图&lt;/h2&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://jsfiddle.net/posva/6du90epg/&quot;&gt;example&lt;/a&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;重定向和别名&quot;&gt;重定向和别名&lt;/h2&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;const router = new VueRouter({
+  routes: [
+    { path: '/a', redirect: { name: 'foo' }}
+  ]
+})
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h4 id=&quot;别名&quot;&gt;别名&lt;/h4&gt;
+
+&lt;p&gt;/a 的别名是 /b，意味着，当用户访问 /b 时，URL 会保持为 /b，但是路由匹配则为 /a，就像用户访问 /a 一样&lt;/p&gt;
+
+</description>
+        <pubDate>Thu, 04 Apr 2019 05:00:00 +0800</pubDate>
+        <link>http://localhost:4000/2019/04/04/Vue-router-concepts/</link>
+        <guid isPermaLink="true">http://localhost:4000/2019/04/04/Vue-router-concepts/</guid>
+        
+        <category>Vue</category>
+        
+        <category>router</category>
+        
+        
+        <category>Front</category>
+        
+        <category>end</category>
+        
+      </item>
     
       <item>
         <title>Sass basic concepts</title>
