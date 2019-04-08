@@ -5,9 +5,108 @@
     <description>Always hungry to keep learning.</description>
     <link>http://localhost:4000/</link>
     <atom:link href="http://localhost:4000/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Thu, 04 Apr 2019 15:10:42 +0800</pubDate>
-    <lastBuildDate>Thu, 04 Apr 2019 15:10:42 +0800</lastBuildDate>
+    <pubDate>Mon, 08 Apr 2019 15:47:27 +0800</pubDate>
+    <lastBuildDate>Mon, 08 Apr 2019 15:47:27 +0800</lastBuildDate>
     <generator>Jekyll v3.8.5</generator>
+    
+      <item>
+        <title>localStorage 用法</title>
+        <description>&lt;ul id=&quot;markdown-toc&quot;&gt;
+  &lt;li&gt;&lt;a href=&quot;#h5中解决cookie存储空间不足的问题&quot; id=&quot;markdown-toc-h5中解决cookie存储空间不足的问题&quot;&gt;h5中解决cookie存储空间不足的问题&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#localstorage和sessionstorage区别与联系&quot; id=&quot;markdown-toc-localstorage和sessionstorage区别与联系&quot;&gt;localStorage和sessionStorage区别与联系：&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#localstorage局限&quot; id=&quot;markdown-toc-localstorage局限&quot;&gt;localStorage局限&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#使用要点&quot; id=&quot;markdown-toc-使用要点&quot;&gt;使用要点&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;h5中解决cookie存储空间不足的问题&quot;&gt;h5中解决cookie存储空间不足的问题&lt;/h3&gt;
+
+&lt;p&gt;cookie存储空间：4k&lt;/p&gt;
+
+&lt;p&gt;localStorage存储空间：5M&lt;/p&gt;
+
+&lt;h3 id=&quot;localstorage和sessionstorage区别与联系&quot;&gt;localStorage和sessionStorage区别与联系：&lt;/h3&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;都用来存储客户端临时信息&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;都只能存储字符串类型的对象&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;localStorage生命周期是永久，除非用户主动清除&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;sessionStorage生命周期为当前窗口或标签页&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;不同浏览器无法共享localStorage或sessionStorage中的信息。相同浏览器的不同页面间可以共享相同的localStorage（页面属于相同域名和端口），但是不同页面或标签页间无法共享sessionStorage的信息&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h3 id=&quot;localstorage局限&quot;&gt;localStorage局限&lt;/h3&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;值类型限定为string&lt;/li&gt;
+  &lt;li&gt;隐私模式下不可读取&lt;/li&gt;
+  &lt;li&gt;本质上是对字符串的读取，存储内容过多会导致页面变卡&lt;/li&gt;
+  &lt;li&gt;不能被爬虫抓取&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h3 id=&quot;使用要点&quot;&gt;使用要点&lt;/h3&gt;
+
+&lt;p&gt;需要先判断浏览器是否支持这个属性&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;if(！window.localStorage){
+    alert(&quot;浏览器支持localstorage&quot;);
+    return false;
+}else{
+    //主逻辑业务
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;三种写入方法&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;if(！window.localStorage){
+    alert(&quot;浏览器支持localstorage&quot;);
+    return false;
+}else{
+    var storage=window.localStorage;
+    //写入a字段
+    storage[&quot;a&quot;]=1;
+    //写入b字段
+    storage.a=1;
+    //写入c字段
+    storage.setItem(&quot;c&quot;,3);
+    console.log(typeof storage[&quot;a&quot;]);
+    console.log(typeof storage[&quot;b&quot;]);
+    console.log(typeof storage[&quot;c&quot;]);
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;删除&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;var storage=window.localStorage;
+storage.a=1;
+storage.setItem(&quot;c&quot;,3);
+console.log(storage);
+storage.removeItem(&quot;a&quot;);
+console.log(storage.a);
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+</description>
+        <pubDate>Mon, 08 Apr 2019 05:00:00 +0800</pubDate>
+        <link>http://localhost:4000/2019/04/08/localStorage-usage/</link>
+        <guid isPermaLink="true">http://localhost:4000/2019/04/08/localStorage-usage/</guid>
+        
+        <category>HTML5</category>
+        
+        
+        <category>HTML5</category>
+        
+      </item>
     
       <item>
         <title>Vue router basic concepts</title>
