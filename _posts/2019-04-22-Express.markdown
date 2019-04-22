@@ -10,92 +10,80 @@ tag: [OAuth] # add tag
 {:toc}
 
 
-最近在搞一个app集成自研的邮件客户端，涉及到两个系统间的统一登录认证，发现当前认证方式不支持系统间认证，故简单研究了下系统间认证方案
+[Express示例](https://developer.mozilla.org/zh-CN/docs/Learn/Server-side/Express_Nodejs/Introduction)
 
-### 应用场景
+### 什么是Express
 
-拿我们的app集成QQ认证为例
-1. 我们开发的app要使用QQ认证，不能保存QQ用户密码
-2. 如QQ只给出一个token，如果token泄露，则所有其他第三方应用也可以使用我们的用户登录，导致被密码保护的数据泄露
-3. QQ需要能够控制我们app登录的权限范围和有效期
+Express 是最流行的 Node 框架，是许多其它流行 Node 框架 的底层库。它提供了以下机制：
 
-### OAuth 2.0解决方案
+- 为不同 URL 路径中使用不同 HTTP 动词的请求（路由）编写处理程序。
+- 集成了“视图”渲染引擎，以便通过将数据插入模板来生成响应。
+- 设置常见 web 应用设置，比如用于连接的端口，以及渲染响应模板的位置。
+- 在请求处理管道的任何位置添加额外的请求处理“中间件”。
 
-- authorization code(授权码模式)
-- implicit(简化模式)
-- resource owner password credentials(密码模式)
-- client credentials(客户端模式)
-
-### OAuth2.0运行流程
-
-使用授权码模式举例
-
-（A）用户打开客户端以后，客户端要求用户给予授权。
-
-response_type：表示授权类型，必选项，此处的值固定为"code"
-client_id：表示客户端的ID，必选项
-redirect_uri：表示重定向URI，可选项
-scope：表示申请的权限范围，可选项
-state：表示客户端的当前状态，可以指定任意值，认证服务器会原封不动地返回这个值。
+### Express生成器
 
 ```
-GET /authorize?response_type=code&client_id=s6BhdRkqt3&state=xyz
-        &redirect_uri=https%3A%2F%2Fclient%2Eexample%2Ecom%2Fcb HTTP/1.1
-Host: server.example.com
+sudo npm install express-generator -g
 ```
 
-（B）用户同意给予客户端授权。
+### 视图引擎 & Css引擎
 
-（C）客户端使用上一步获得的授权，向认证服务器申请令牌。
+[pug模板引擎](https://pugjs.org/api/getting-started.html)
 
-code：表示授权码，必选项。该码的有效期应该很短，通常设为10分钟，客户端只能使用该码一次，否则会被授权服务器拒绝。该码与客户端ID和重定向URI，是一一对应关系。
-state：如果客户端的请求中包含这个参数，认证服务器的回应也必须一模一样包含这个参数。
+Express 应用生成器支持多款流行的视图/模板引擎，包括 EJS、Hbs、Pug (Jade)、Twig 和 Vash，缺省选项是 Jade。Express 本身也支持大量其他模板语言，开箱即用。
 
-```
-HTTP/1.1 302 Found
-Location: https://client.example.com/cb?code=SplxlOBeZQQYbYS6WxSbIA&state=xyz
-```
+Express 应用生成器支持最常见的 CSS 引擎：LESS, SASS, Compass, Stylus。
 
-（D）认证服务器对客户端进行认证以后，确认无误，同意发放令牌。
+### 路由和控制器
 
-grant_type：表示使用的授权模式，必选项，此处的值固定为"authorization_code"。
-code：表示上一步获得的授权码，必选项。
-redirect_uri：表示重定向URI，必选项，且必须与A步骤中的该参数值保持一致。
-client_id：表示客户端ID，必选项。
+路由是一段 Express 代码，它将 HTTP 动词（GET、POST、PUT、DELETE 等）、URL 路径/模式和处理函数三者关联起来。
 
 ```
-POST /token HTTP/1.1
-Host: server.example.com
-Authorization: Basic czZCaGRSa3F0MzpnWDFmQmF0M2JW
-Content-Type: application/x-www-form-urlencoded
+// wiki.js - 维基路由模块
 
-grant_type=authorization_code&code=SplxlOBeZQQYbYS6WxSbIA
-&redirect_uri=https%3A%2F%2Fclient%2Eexample%2Ecom%2Fcb
+const express = require('express');
+const router = express.Router();
+
+// 主页路由
+router.get('/', (req, res) => {
+  res.send('维基主页');
+});
+
+// “关于页面”路由
+router.get('/about', (req, res) => {
+  res.send('关于此维基');
+});
+
+module.exports = router;
 ```
 
-
-（E）客户端使用令牌，向资源服务器申请获取资源。
-
-access_token：表示访问令牌，必选项。
-token_type：表示令牌类型，该值大小写不敏感，必选项，可以是bearer类型或mac类型。
-expires_in：表示过期时间，单位为秒。如果省略该参数，必须其他方式设置过期时间。
-refresh_token：表示更新令牌，用来获取下一次的访问令牌，可选项。
-scope：表示权限范围，如果与客户端申请的范围一致，此项可省略。
+#### 路由函数
 
 ```
-     HTTP/1.1 200 OK
-     Content-Type: application/json;charset=UTF-8
-     Cache-Control: no-store
-     Pragma: no-cache
-
-     {
-       "access_token":"2YotnFZFEjr1zCsicMWpAA",
-       "token_type":"example",
-       "expires_in":3600,
-       "refresh_token":"tGzv3JOkF0XG5Qx2TlKWIA",
-       "example_parameter":"example_value"
-     }
+router.get('/about', (req, res) => {
+  res.send('关于此维基');
+});
 ```
 
-（F）资源服务器确认令牌无误，同意向客户端开放资源。
+#### 路由参数
 
+```
+app.get('/users/:userId/books/:bookId', (req, res) => {
+  // 通过 req.params.userId 访问 userId
+  // 通过 req.params.bookId 访问 bookId
+  res.send(req.params);
+});
+```
+
+### express-validator 
+
+执行表单数据的验证和清理
+
+```
+body('name', 'Empty name').isLength({ min: 1 }), 
+body('age', 'Invalid age').optional({ checkFalsy: true }).isISO8601()
+
+body('name').isLength({ min: 1 }).trim().withMessage('Name empty.')
+    .isAlpha().withMessage('Name must be alphabet letters.')
+```
