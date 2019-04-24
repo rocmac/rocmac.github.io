@@ -11,7 +11,7 @@ tag: [nodejs] # add tag
 
 
 [nodejs debug官方方法（包括本地调试和远程调试）](https://nodejs.org/en/docs/guides/debugging-getting-started/)
-转了一圈发现看上面的文章就够了
+转了一圈发现看超链接的文章就够了
 
 ### 使用webstorm调试
 
