@@ -10,7 +10,7 @@ tag: [typescript] # add tag
 {:toc}
 
 
-最近在搞tutanota邮件客户端，大量使用了typescript，这里就讲一些基本概念简单记录一下
+最近在搞tutanota邮件客户端，大量使用了typescript，这里就将一些基本概念简单记录一下
 
 ## 几个要点：
 
@@ -19,22 +19,26 @@ tag: [typescript] # add tag
 - IDE建议使用VS Code：最近微软拥抱开源的力度比较大，typescript和vs code都是开源产品，重点是vs code本身就是使用typescript开发的，简单一句话，用起来爽爽的，绝对不后悔
 - Typescript 是 Javascript的超集：提供了类型系统和ES6的支持，可以编译为纯javascript
 
+---
+
 ## Why Typescript
 
 引用官网的内容
 
-1.  增加了代码的可读性和可维护性
+1. 增加了代码的可读性和可维护性
 
 - 一句话，类型系统
 - 编译阶段发现大部分错误
 - 增强了编译器和IDE提示等功能，这也依赖于类型系统
 
-2.  有容乃大
+2. 有容乃大
 
 - 是JS的超集，.js直接命名为.ts即可使用
 - 即使不定义类型，也可以自动根据上下文推断出类型
 - 编译报错也可以生成Javascript，额。。。
 - 兼容第三方库
+
+---
 
 ## Typescript基础
 
