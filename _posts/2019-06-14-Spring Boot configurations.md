@@ -25,51 +25,51 @@ tag: [ssh] # add tag
 
 -  @SpringBootApplication
 
-主类（入口类）的注解。（@Configuration，@EnableAutoConfiguration ， @ComponentScan）
+    主类（入口类）的注解。（@Configuration，@EnableAutoConfiguration ， @ComponentScan）
 
 - @Repository
 
-DAO层注解，DAO层中接口继承JpaRepository<T,ID extends Serializable>,需要在build.gradle中引入相关jpa的一个jar自动加载。
+    DAO层注解，DAO层中接口继承JpaRepository<T,ID extends Serializable>,需要在build.gradle中引入相关jpa的一个jar自动加载。
 
 - @Service
 
-ServiceImpl上面注解，注意不是Service接口，而是接口的实现类上。
+    ServiceImpl上面注解，注意不是Service接口，而是接口的实现类上。
 
 - @Entity
 
-SpringMVC中model层相当于SpringBoot中的entity层，@Entity注解在实体类(domain层)上面。@Table(name ="数据库表名")，这个注解也注释在实体类上，对应数据库中相应的表。@Id、@Column注解用于标注实体类中的字段，pk字段标注为@Id，其余@Column。
+    SpringMVC中model层相当于SpringBoot中的entity层，@Entity注解在实体类(domain层)上面。@Table(name ="数据库表名")，这个注解也注释在实体类上，对应数据库中相应的表。@Id、@Column注解用于标注实体类中的字段，pk字段标注为@Id，其余@Column。
 
 - @RestController
 
-Controller层注解，@RestController相当于@Controller + @ResponseBody
+    Controller层注解，@RestController相当于@Controller + @ResponseBody
 
-特殊的，若该控制器用于跳转JSP页面，必须用@Controller标注，否则不予跳转。
+    特殊的，若该控制器用于跳转JSP页面，必须用@Controller标注，否则不予跳转。
 
 - @RequestMapping
 
-@RequestMapping是一个用来处理请求地址映射的注解，用于类或方法上，用于类上，表示类中所有响应请求的方法都是以该路径为父路径；
+    @RequestMapping是一个用来处理请求地址映射的注解，用于类或方法上，用于类上，表示类中所有响应请求的方法都是以该路径为父路径；
 
 - @Autowired
 
-自动装配，自动导入依赖的beans，一般自动注入*Mapper或者*Service到另一层。
+    自动装配，自动导入依赖的beans，一般自动注入*Mapper或者*Service到另一层。
 
 - @PathVariable
 
-用来处理占位符，类似user/{id}的路径，参数中需要@PathVariable(value="id") String id，为了避免犯错，尽量命名相同。
+    用来处理占位符，类似user/{id}的路径，参数中需要@PathVariable(value="id") String id，为了避免犯错，尽量命名相同。
 
 - @ResponseBody
 
-Controller方法返回结果直接写入HTTP response body中，一般在异步ajax获取数据时使用。
+    Controller方法返回结果直接写入HTTP response body中，一般在异步ajax获取数据时使用。
 
-也就是后台向前台返回结果的时候写此标签。
+    也就是后台向前台返回结果的时候写此标签。
 
 - @RequestBody
 
-对json格式的参数转换为Java类型。
+    对json格式的参数转换为Java类型。
 
 - @RequestParam
 
-用在方法参数之前@RequestParam String id =request.getParameter("id");
+    用在方法参数之前@RequestParam String id =request.getParameter("id");
 
 ---
 
