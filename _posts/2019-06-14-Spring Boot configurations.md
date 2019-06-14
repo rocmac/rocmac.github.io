@@ -108,8 +108,9 @@ public class CORSConfig {
 
   -  创建 Entity
   
-    自增主键
-    @GeneratedValue(strategy=GenerationType.IDENTITY)
+  
+        自增主键
+        @GeneratedValue(strategy=GenerationType.IDENTITY)
 
   - Repository
 
@@ -137,6 +138,6 @@ public class CORSConfig {
 
   -  Pageable
 
-    啥也不说了，分页神器
+        啥也不说了，分页神器
 
 ---
