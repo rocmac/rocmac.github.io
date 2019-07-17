@@ -14,7 +14,7 @@ tag: [Javascript, ES6] # add tag
 
 这里就是简单记录一下await/async的用法，话不多少，看代码和注释就都懂了
 
-(原文链接)[https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Statements/async_function]
+[原文链接](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Statements/async_function)
 
 
 ```
