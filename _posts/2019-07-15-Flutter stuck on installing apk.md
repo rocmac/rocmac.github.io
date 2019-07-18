@@ -20,6 +20,14 @@ Installing build/app/outputs/apk/app.apk...
 
 卡住后只能新建一个Flutter项目，这时通常都是好的
 
+## VS Code日志打印
+
+想要打印详细的Flutter run日志，命令模式输入：capture logs
+
+```
+Dart: Capture Logs
+```
+
 ## 解决方案
 
 发现和IDE没啥关系，试了几次发现模拟器是可以正常启动的，所以怀疑还是国内Android手机ROM被修改导致的(当然我也没啥证据)
