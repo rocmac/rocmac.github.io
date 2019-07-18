@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  Flutter issues
+title:  Flutter stuck on installing apk
 date:   2019-07-15 00:00:00 +0300
 categories: Flutter
 tag: [Flutter, emulator] # add tag
