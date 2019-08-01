@@ -18,7 +18,7 @@ tag: [Javascript] # add tag
 
 ## Add two numbers题解
 
-话不多说，typescript版解题答案，后面自己测试部分请自行忽略
+话不多说，typescript版解题答案，ListNode是根据LeetCode给的方法改造的，也可以给后面其他提示复用
 
 ```
 export class ListNode{
