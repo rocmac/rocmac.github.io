@@ -21,29 +21,11 @@ tag: [Javascript] # add tag
 话不多说，typescript版解题答案，后面自己测试部分请自行忽略
 
 ```
-/**
- * Definition for singly-linked list.
- * function ListNode(val) {
- *     this.val = val;
- *     this.next = null;
- * }
- */
-/**
- * @param {ListNode} l1
- * @param {ListNode} l2
- * @return {ListNode}
- */
-
-// function ListNode(val:number):void {
-//     this.val = val;
-//     this.next = null;
-// }
-
-class ListNode{
+export class ListNode{
     val:number;
     next:ListNode;
     
-    constructor(val:number){
+    constructor(val?:number){
         this.val = val;
         this.next = null;
     }
@@ -91,19 +73,4 @@ var addTwoNumbers = function (l1:ListNode, l2:ListNode) {
 
     return head;
 };
-
-
-var calc = function () {
-    console.log("starting 0002.ts promise");
-    let temp1 = new ListNode(2);
-    temp1.next = new ListNode(4);
-    temp1.next.next = new ListNode(3);
-    let temp2 = new ListNode(5);
-    temp2.next = new ListNode(6);
-    temp2.next.next = new ListNode(4);
-    let result = addTwoNumbers(temp1, temp2);
-    console.log("result:" + result.next.next.val);
-};
-
-calc();
 ```
