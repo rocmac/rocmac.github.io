@@ -16,14 +16,14 @@ tag: [Typescript] # add tag
 
 ## typescript tips
 
-candidates升序排序
+1. candidates升序排序
 
 ```
 candidates:number[]
 candidates.sort((a, b) => a-b)
 ```
 
-扩展运算符 ...
+2. 扩展运算符 ...
 
 ```
 function backtrackNumber(list:number[][], tempList:number[], nums:number[]):number{
@@ -41,13 +41,13 @@ function backtrackNumber(list:number[][], tempList:number[], nums:number[]):numb
 }
 ```
 
-Array clone
+3. Array clone
 
 ```
 const oMatrix:number[][] = JSON.parse(JSON.stringify(matrix));
 ```
 
-String sort
+4. String sort
 
 ```
     function sort(str:string){
@@ -55,19 +55,19 @@ String sort
     }
 ```
 
-Object.values:一个包含对象自身的所有可枚举属性值的数组
+5. Object.values:一个包含对象自身的所有可枚举属性值的数组
 
 ```
 (<any>Object).values(hashTable);
 ```
 
-Array过滤null和undefined
+6. Array过滤null和undefined
 
 ```
 intervals.filter(q=>q)
 ```
 
-位运算符取中间值
+7. 位运算符取中间值
 
 ```
 const mid = start + ((end - start)>>1);
