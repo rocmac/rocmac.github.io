@@ -16,7 +16,7 @@ tag: [webpack] # add tag
 
 https://github.com/rocmac/demo-webpack.git
 
-## 1. 什什么是WebPack
+## 1. 什么是WebPack
 
 WebPack可以看做是模块打包机:它做的事情是，分析你的项⽬目结构，找到JavaScript模块以及其它的⼀一些浏览器器不不能直 接运⾏行行的拓拓展语⾔言(Scss，TypeScript等)，并将其打包为合适的格式以供浏览器器使⽤用。
 
@@ -138,7 +138,7 @@ npm i webpack-dev-server –D
 
 ## 支持加载css⽂文件
 
-### 什什么是Loader
+### 什么是Loader
 
 通过使⽤用不不同的Loader，Webpack可以要把不不同的⽂文件都转成JS⽂文件,⽐比如CSS、ES6/7、JSX等
 
