@@ -23,14 +23,14 @@ tag: [埋点] # add tag
 import React from 'react'
 import { usePromise } from 'promise-hook'
 
-const Demo6 = () => {
-    const { isLoading, data } = usePromise(fetchChengpin, { resolve: true });
+const Demo = () => {
+    const { isLoading, data } = usePromise(fetchURL, { resolve: true });
     return (
-        <div>{isLoading ? <div>正在加载...</div> : data.chengpinDetails[0].title}</div>
+        <div>{isLoading ? <div>正在加载...</div> : data.site[0].title}</div>
     )
 }
-const fetchChengpin = () =>
-    fetch(`http://iwenwiki.com/api/blueberrypai/getChengpinDetails.php`).then(res => res.json());
+const fetchURL = () =>
+    fetch(`http://www.***.com`).then(res => res.json());
 
 export default Demo;
 ```
