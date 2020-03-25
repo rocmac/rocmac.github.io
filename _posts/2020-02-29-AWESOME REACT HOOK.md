@@ -3,7 +3,7 @@ layout: post
 title:  AWESOME REACT HOOK
 date:   2020-02-29 00:00:00 +0300
 categories: REACT,GRAPHQL
-tag: [埋点] # add tag
+tag: [FRONTEND] # add tag
 ---
 
 * content
