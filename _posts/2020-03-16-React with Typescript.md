@@ -1,7 +1,7 @@
 ---
 layout: post
-title:  React with TypeScript: Best Practices
-date:   2020-03-18 00:00:00 +0300
+title:  React with TypeScript
+date:   2020-03-16 00:00:00 +0300
 categories: REACT,TYPESCRIPT
 tag: [FRONTEND] # add tag
 ---
