@@ -29,11 +29,11 @@ tag: [埋点] # add tag
 
 - [x] 官方指南
 
-https://amazonaws-china.com/cn/certification/certification-prep/
+[https://amazonaws-china.com/cn/certification/certification-prep/](https://amazonaws-china.com/cn/certification/certification-prep/)
 
 这里面有每个级别和类型考试的说明，白皮书、考试要求等一定还是要看一遍的
 
-https://amazonaws-china.com/cn/getting-started/use-cases/websites/#documentation
+[https://amazonaws-china.com/cn/getting-started/use-cases/websites/#documentation](https://amazonaws-china.com/cn/getting-started/use-cases/websites/#documentation)
 
 这个里面有一些最佳时间，比如建站等，可以看着实操加深印象
 
@@ -41,15 +41,15 @@ https://amazonaws-china.com/cn/getting-started/use-cases/websites/#documentation
 
 这里就推荐几个，大家可以baidu一下，一搜一大把
 
-https://xuyanxin.top/2019/03/29/AWS-Develop-Associate-%E8%80%83%E8%AF%95/
+[https://xuyanxin.top/2019/03/29/AWS-Develop-Associate-%E8%80%83%E8%AF%95/](https://xuyanxin.top/2019/03/29/AWS-Develop-Associate-%E8%80%83%E8%AF%95/)
 
-http://jayendrapatil.com/
+[http://jayendrapatil.com/](http://jayendrapatil.com/)
 
-https://zhuanlan.zhihu.com/p/88234709
+[https://zhuanlan.zhihu.com/p/88234709](https://zhuanlan.zhihu.com/p/88234709)
 
 这里面有个可以练习的网站，推荐一下：
 
-https://www.examtopics.com/exams/amazon/aws-certified-solutions-architect-professional/
+[https://www.examtopics.com/exams/amazon/aws-certified-solutions-architect-professional/](https://www.examtopics.com/exams/amazon/aws-certified-solutions-architect-professional/)
 
 - [x] 报考
 

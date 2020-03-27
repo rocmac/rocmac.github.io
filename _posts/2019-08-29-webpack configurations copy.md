@@ -14,7 +14,7 @@ tag: [webpack] # add tag
 
 这里简单总结下webpack的常用配置，同时提交了一个示例工程可供下载使用
 
-https://github.com/rocmac/demo-webpack.git
+[https://github.com/rocmac/demo-webpack.git](https://github.com/rocmac/demo-webpack.git)
 
 ## 1. 什么是WebPack
 

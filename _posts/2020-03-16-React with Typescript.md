@@ -19,7 +19,7 @@ tag: [FRONTEND] # add tag
 ## React with Typescript
 
 最佳实践看这一篇就够了，讲解的我认为比较全面也比较详尽：
-https://www.sitepoint.com/react-with-typescript-best-practices/
+[https://www.sitepoint.com/react-with-typescript-best-practices/](https://www.sitepoint.com/react-with-typescript-best-practices/)
 
 - create-react-app
 

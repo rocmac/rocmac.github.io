@@ -22,13 +22,13 @@ tag: [FRONTEND] # add tag
 
 划重点：React-Bootstrap是Bootstrap的javascript重新实现版本
 
-- 与reactstrp对比
+- ### 与reactstrp对比
 
 两者定位差不多，但是如下面链接所示，还是React-Bootstrap更胜一筹
   
 [https://www.npmtrends.com/react-bootstrap-vs-reactstrap](https://www.npmtrends.com/react-bootstrap-vs-reactstrap)
 
-- 实现参考
+- ### 实现参考
 
 发现结合css使用起来在定义名称时候有点不方便
   
@@ -50,7 +50,7 @@ import { Container, Row, Col } from 'react-bootstrap';
 </Container>
 ```
 
-- container布局flexbox
+- ### container布局flexbox
 
 可以参考官网
 
@@ -84,13 +84,13 @@ import { Container, Row, Col } from 'react-bootstrap';
 
 ## 其他
 
-- Sass
+- ### Sass
 
 css对于我简直如天书一般神奇，一直没有深入研究，照葫芦画瓢。贴个指南后面慢慢研究吧
 
 [https://sass-lang.com/guide](https://sass-lang.com/guide)
 
-- styled-components
+- ### styled-components
 
 在React中更加方便的定义和使用css
 

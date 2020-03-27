@@ -12,13 +12,13 @@ tag: [Javascript] # add tag
 
 ## Immutable for javascript
 
-https://github.com/immutable-js/immutable-js
+[https://github.com/immutable-js/immutable-js](https://github.com/immutable-js/immutable-js)
 
 github将近3w个star不是闹着玩的^_^
 
 官方文档：
 
-https://immutable-js.github.io/immutable-js/
+[https://immutable-js.github.io/immutable-js/](https://immutable-js.github.io/immutable-js/)
 
 * 官方定义：
 
